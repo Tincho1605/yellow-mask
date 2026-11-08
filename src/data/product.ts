@@ -15,6 +15,8 @@ export interface Face {
   image: string;
   alt: string;
   sku: string;
+  /** Foto de la misma cara usada con goggles (publicación de marketplace). */
+  goggles?: { src: string; alt: string };
 }
 
 export interface GalleryImage {
@@ -79,6 +81,10 @@ export const FACES: Face[] = [
     image: '/images/yc-big-grin-product.webp',
     alt: 'Yellow Club Gran sonrisa sobre fondo blanco',
     sku: 'YBH-SONRISA',
+    goggles: {
+      src: '/images/yc-big-grin-goggles.webp',
+      alt: 'Yellow Club Gran sonrisa usado con goggles de nieve',
+    },
   },
   {
     id: 'chomp',
@@ -95,6 +101,10 @@ export const FACES: Face[] = [
     image: '/images/yc-smirk-product.webp',
     alt: 'Yellow Club Sonrisa pícara sobre fondo blanco',
     sku: 'YBH-PICARA',
+    goggles: {
+      src: '/images/yc-smirk-goggles.webp',
+      alt: 'Yellow Club Sonrisa pícara usado con goggles de nieve',
+    },
   },
 ];
 
@@ -105,6 +115,7 @@ export const FACE_BY_ID: Record<FaceId, Face> = Object.fromEntries(FACES.map((f)
 
 export const GALLERY: GalleryImage[] = [
   ...FACES.map((f) => ({ src: f.image, alt: f.alt, faceId: f.id })),
+  ...FACES.flatMap((f) => (f.goggles ? [{ src: f.goggles.src, alt: f.goggles.alt, faceId: f.id }] : [])),
   { src: '/images/yellow-mask-06-selfie.webp', alt: 'Selfie con el pasamontañas Yellow Club Lengua fuera' },
 ];
 

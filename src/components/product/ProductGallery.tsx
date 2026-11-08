@@ -108,11 +108,11 @@ export function ProductGallery() {
 
       <ul
         ref={thumbsRef}
-        className="no-scrollbar mt-3 flex snap-x gap-2.5 overflow-x-auto px-0.5 py-0.5 md:mt-4 md:justify-center md:gap-3"
+        className="no-scrollbar mt-3 flex snap-x gap-2.5 overflow-x-auto px-0.5 py-0.5 md:mt-4 md:gap-3"
         aria-label="Miniaturas"
       >
         {GALLERY.map((img, i) => (
-          <li key={img.src} className="w-[calc((100%-2*10px)/3.2)] shrink-0 snap-start md:w-[18%] md:max-w-[117px]">
+          <li key={img.src} className="w-[calc((100%-2*10px)/3.2)] shrink-0 snap-start md:w-[calc((100%-4*12px)/5)]">
             <button
               type="button"
               onClick={() => go(i)}

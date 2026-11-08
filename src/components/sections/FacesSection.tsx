@@ -37,8 +37,20 @@ export function FacesSection() {
                       width={1254}
                       height={1254}
                       loading="lazy"
-                      className="aspect-square w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                      className={`aspect-square w-full object-cover transition-[transform,opacity] duration-500 ease-out group-hover:scale-[1.05] ${
+                        f.goggles ? 'group-hover:opacity-0' : ''
+                      }`}
                     />
+                    {f.goggles && (
+                      <img
+                        src={f.goggles.src}
+                        alt=""
+                        width={1170}
+                        height={1170}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover opacity-0 transition-[transform,opacity] duration-500 ease-out group-hover:scale-[1.05] group-hover:opacity-100"
+                      />
+                    )}
                     <span
                       className={`absolute top-2.5 right-2.5 flex h-7 w-7 items-center justify-center rounded-full bg-ink text-yc transition-all duration-300 ${
                         selected ? 'scale-100 opacity-100' : 'scale-50 opacity-0'

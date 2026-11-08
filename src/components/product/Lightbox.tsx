@@ -124,7 +124,7 @@ export function Lightbox({ open, index, onIndexChange, onClose }: LightboxProps)
         ))}
       </div>
 
-      <ul className="no-scrollbar flex justify-center gap-2 overflow-x-auto px-4 py-4">
+      <ul className="no-scrollbar mx-auto flex max-w-full gap-2 overflow-x-auto px-4 py-4">
         {GALLERY.map((g, i) => (
           <li key={g.src}>
             <button

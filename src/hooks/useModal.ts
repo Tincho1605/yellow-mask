@@ -24,11 +24,17 @@ export function useModal<T extends HTMLElement>(open: boolean, onClose: () => vo
     document.body.style.overflow = 'hidden';
     if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
 
-    const focusTimer = window.setTimeout(() => {
+    // Reintenta mientras el panel termina de hacerse visible (transición de visibility).
+    let attempts = 0;
+    let focusTimer = 0;
+    const tryFocus = () => {
       const el = ref.current;
+      if (el && el.contains(document.activeElement)) return;
       const target = el?.querySelector<HTMLElement>('[data-autofocus]') ?? el?.querySelector<HTMLElement>(FOCUSABLE);
       target?.focus({ preventScroll: true });
-    }, 50);
+      if (++attempts < 8 && !(el && el.contains(document.activeElement))) focusTimer = window.setTimeout(tryFocus, 60);
+    };
+    focusTimer = window.setTimeout(tryFocus, 30);
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
