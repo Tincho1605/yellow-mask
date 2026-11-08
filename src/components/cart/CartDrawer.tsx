@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { useState } from 'react';
 import { MAX_LINE_QUANTITY, useCart, type CartLineView } from '../../context/CartContext';
 import { useRouter } from '../../context/RouterContext';
@@ -116,7 +117,7 @@ export function CartDrawer() {
 
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
-            <img src="/images/yellow-mask-isotipo.png" alt="" className="h-24 w-24 opacity-90" />
+            <img src={asset('images/yellow-mask-isotipo.png')} alt="" className="h-24 w-24 opacity-90" />
             <p className="mt-4 font-heading text-[24px] font-extrabold">Tu carrito está vacío</p>
             <button
               type="button"

@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { PRODUCT } from '../../data/product';
 import { Reveal } from '../ui/Reveal';
 
@@ -21,7 +22,7 @@ export function PresentationSection() {
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-0">
           <Reveal className="overflow-hidden rounded-media">
             <img
-              src="/images/selfie-cima-nevada.webp"
+              src={asset('images/selfie-cima-nevada.webp')}
               alt="Selfie en la cima nevada con el pasamontañas Yellow Club Lengua fuera y goggles"
               width={1122}
               height={1402}

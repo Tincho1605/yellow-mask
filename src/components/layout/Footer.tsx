@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { FOOTER_HELP, MAIN_MENU, POLICY_LINKS } from '../../data/navigation';
 import { Link } from '../ui/Link';
 
@@ -76,7 +77,7 @@ export function Footer() {
             <ul className="flex flex-wrap gap-[6px]" aria-label="Formas de pago">
               {PAYMENT_ICONS.map(([file, label]) => (
                 <li key={file}>
-                  <img src={`/payment/${file}.svg`} alt={label} width={38} height={24} loading="lazy" />
+                  <img src={asset(`payment/${file}.svg`)} alt={label} width={38} height={24} loading="lazy" />
                 </li>
               ))}
             </ul>

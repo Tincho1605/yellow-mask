@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { MAIN_MENU } from '../../data/navigation';
 import { useUI } from '../../context/UIContext';
 import { useModal } from '../../hooks/useModal';
@@ -28,7 +29,7 @@ export function MobileMenu({ active }: { active: string }) {
         }`}
       >
         <div className="flex items-center justify-between border-b border-ink/10 px-5 py-3">
-          <img src="/images/yellow-club-header-logo.webp" alt="Yellow Club" className="h-auto w-[140px]" />
+          <img src={asset('images/yellow-club-header-logo.webp')} alt="Yellow Club" className="h-auto w-[140px]" />
           <button type="button" onClick={close} aria-label="Cerrar menú" className="flex h-11 w-11 items-center justify-center">
             <CloseIcon />
           </button>

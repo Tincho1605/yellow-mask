@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset';
 /**
  * Catálogo del producto. Textos, precios, packs, FAQ y reseñas reproducen la
  * página de referencia: https://yellowclub.store/products/pasamontanas-amarillo-cara-divertida
@@ -70,7 +71,7 @@ export const FACES: Face[] = [
     id: 'lengua-fuera',
     name: 'Lengua fuera',
     description: 'La principal: lengua roja y actitud máxima.',
-    image: '/images/yc-tongue-out-product.webp',
+    image: asset('images/yc-tongue-out-product.webp'),
     alt: 'Yellow Club Lengua fuera sobre fondo blanco',
     sku: 'YBH-LENGUA',
   },
@@ -78,11 +79,11 @@ export const FACES: Face[] = [
     id: 'gran-sonrisa',
     name: 'Gran sonrisa',
     description: 'Sonrisa amplia con dientes blancos.',
-    image: '/images/yc-big-grin-product.webp',
+    image: asset('images/yc-big-grin-product.webp'),
     alt: 'Yellow Club Gran sonrisa sobre fondo blanco',
     sku: 'YBH-SONRISA',
     goggles: {
-      src: '/images/yc-big-grin-goggles.webp',
+      src: asset('images/yc-big-grin-goggles.webp'),
       alt: 'Yellow Club Gran sonrisa usado con goggles de nieve',
     },
   },
@@ -90,7 +91,7 @@ export const FACES: Face[] = [
     id: 'chomp',
     name: 'Chomp',
     description: 'La sonrisa más exagerada del grupo.',
-    image: '/images/yc-chomp-product.webp',
+    image: asset('images/yc-chomp-product.webp'),
     alt: 'Yellow Club Chomp sobre fondo blanco',
     sku: 'YBH-CHOMP',
   },
@@ -98,11 +99,11 @@ export const FACES: Face[] = [
     id: 'sonrisa-picara',
     name: 'Sonrisa pícara',
     description: 'Una expresión más discreta y ladeada.',
-    image: '/images/yc-smirk-product.webp',
+    image: asset('images/yc-smirk-product.webp'),
     alt: 'Yellow Club Sonrisa pícara sobre fondo blanco',
     sku: 'YBH-PICARA',
     goggles: {
-      src: '/images/yc-smirk-goggles.webp',
+      src: asset('images/yc-smirk-goggles.webp'),
       alt: 'Yellow Club Sonrisa pícara usado con goggles de nieve',
     },
   },
@@ -116,7 +117,7 @@ export const FACE_BY_ID: Record<FaceId, Face> = Object.fromEntries(FACES.map((f)
 export const GALLERY: GalleryImage[] = [
   ...FACES.map((f) => ({ src: f.image, alt: f.alt, faceId: f.id })),
   ...FACES.flatMap((f) => (f.goggles ? [{ src: f.goggles.src, alt: f.goggles.alt, faceId: f.id }] : [])),
-  { src: '/images/yellow-mask-06-selfie.webp', alt: 'Selfie con el pasamontañas Yellow Club Lengua fuera' },
+  { src: asset('images/yellow-mask-06-selfie.webp'), alt: 'Selfie con el pasamontañas Yellow Club Lengua fuera' },
 ];
 
 export const PACKS: Pack[] = [

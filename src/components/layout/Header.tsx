@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { useEffect, useRef, useState } from 'react';
 import { MAIN_MENU } from '../../data/navigation';
 import { useCart } from '../../context/CartContext';
@@ -77,7 +78,7 @@ export function Header() {
 
           <Link to="/" className="block justify-self-center px-1 py-0.5 lg:justify-self-start" aria-label="Yellow Club – Inicio">
             <img
-              src="/images/yellow-club-header-logo.webp"
+              src={asset('images/yellow-club-header-logo.webp')}
               alt="Yellow Club"
               width={220}
               height={68}

@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { FACES } from '../../data/product';
 import { useProduct } from '../../context/ProductContext';
 import { scrollToSection } from '../../context/RouterContext';
@@ -14,7 +15,7 @@ export function GogglesSection() {
         <div className="grid items-center md:grid-cols-2">
           <Reveal className="order-1 overflow-hidden rounded-media md:order-2">
             <img
-              src="/images/infografia-goggles.webp"
+              src={asset('images/infografia-goggles.webp')}
               alt="Infografía de uso del pasamontañas con goggles: zona de ojos despejada, ajuste cómodo alrededor del rostro y la máscara sigue siendo protagonista"
               width={1400}
               height={1400}

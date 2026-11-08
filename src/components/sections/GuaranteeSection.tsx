@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { Reveal } from '../ui/Reveal';
 import { Link } from '../ui/Link';
 
@@ -9,7 +10,7 @@ export function GuaranteeSection() {
         <div className="grid items-center gap-6 md:grid-cols-2 md:gap-0">
           <Reveal className="mx-auto w-full max-w-[520px] md:max-w-none">
             <img
-              src="/images/sello-garantia-90-dias.webp"
+              src={asset('images/sello-garantia-90-dias.webp')}
               alt="Sello dorado de 90 días de garantía Yellow Club"
               width={1254}
               height={1254}
