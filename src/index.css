@@ -1,0 +1,157 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens taken from the reference theme (Zendrop 3.0 / Dawn based):
+ *   scheme-1 #FFFFFF / #111111 · button #FFD314
+ *   scheme-2 #FFF8D6 · scheme-4 #FFD314 · scheme-5 #F5F5F2
+ *   headings Jost 800 · body Instrument Sans 400
+ *   buttons 12px radius · inputs 10px · media 14px · pills 40px
+ */
+@theme {
+  --color-yc: #ffd314;
+  --color-yc-soft: #fff8d6;
+  --color-yc-dark: #6f5a00;
+  --color-ink: #111111;
+  --color-paper: #f5f5f2;
+  --color-sale: #d72c0d;
+
+  --font-heading: 'Jost Variable', 'Jost', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Instrument Sans Variable', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-media: 14px;
+  --radius-button: 12px;
+  --radius-input: 10px;
+
+  --animate-marquee: marquee 50s linear infinite;
+  --animate-fade-in: fade-in 0.35s ease both;
+  --animate-pop: pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-flash: flash 1.4s ease;
+  --animate-shake: shake 0.45s ease;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(2px); }
+  }
+  @keyframes flash {
+    0% { background-color: rgb(255 211 20 / 0.35); }
+    100% { background-color: transparent; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white text-ink font-body antialiased;
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-heading {
+    font-family: var(--font-heading);
+    letter-spacing: 0.01em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  button {
+    cursor: pointer;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .page-width {
+    @apply mx-auto w-full max-w-[1400px] px-[15px] md:px-[50px];
+  }
+  .h-section {
+    @apply font-heading font-extrabold text-[30px] leading-[1.15] md:text-[40px];
+  }
+  .rte p + p {
+    margin-top: 0.9em;
+  }
+}
+
+/* Scroll reveal (equivalent to Dawn's `scroll-trigger animate--slide-in`). */
+.reveal {
+  opacity: 0.01;
+  transform: translateY(2rem);
+  transition:
+    opacity 0.6s cubic-bezier(0, 0, 0.3, 1),
+    transform 0.6s cubic-bezier(0, 0, 0.3, 1);
+  transition-delay: calc(var(--reveal-order, 0) * 75ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated waves above the footer (same SVG technique as the reference). */
+.wave-1 > use { animation: wave-a 10s linear infinite; }
+.wave-2 > use { animation: wave-b 8s linear infinite; opacity: 0.4; }
+.wave-3 > use { animation: wave-a 6s linear infinite; opacity: 0.3; }
+.wave-4 > use { animation: wave-b 4s linear infinite; opacity: 0.2; }
+@keyframes wave-a {
+  0% { transform: translate(85px, 0); }
+  100% { transform: translate(-90px, 0); }
+}
+@keyframes wave-b {
+  0% { transform: translate(-90px, 0); }
+  100% { transform: translate(85px, 0); }
+}
+
+/* Native select arrow replaced with a consistent chevron. */
+.select-chevron {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23111' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px !important;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
